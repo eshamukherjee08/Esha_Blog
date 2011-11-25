@@ -17,7 +17,11 @@
       <a href="http://localhost:3000">Home</a><br />
       <a><%= link_to 'New User/Sign Up', new_user_path %></a><br />
       <a href="http://www..../contact">Contact</a><br /><br /><br />
-      <a><%= link_to 'Sign In', login_url %></a>
+      <% if session[:user_id] %> 
+				<a><%= link_to 'Sign Out', logout_path, :method => :delete %></a>
+			<% else %>
+			  <a><%= link_to 'Sign In', login_url %></a>
+			<% end %>
     </div>
     <div id="main">
       <%= yield %>

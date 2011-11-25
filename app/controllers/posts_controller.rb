@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
+  before_filter :authorize
   def index
     @posts = Post.all
 
@@ -40,11 +41,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
+    params[:post][:user_id] = session[:user_id]
     @post = Post.new(params[:post])
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+        format.html { redirect_to(User.find(session[:user_id]), :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
@@ -60,7 +62,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+        format.html { redirect_to(User.find(session[:user_id]), :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,7 +78,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(User.find(session[:user_id])) }
       format.xml  { head :ok }
     end
   end
