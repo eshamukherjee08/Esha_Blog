@@ -62,7 +62,6 @@ h1 {
         font:  350% comic;
         color: maroon;
         border-bottom: 3px outset #77d;
-        text-align: center;
 }
 
 /* An entry in the display catalog */
@@ -100,16 +99,19 @@ h1 {
 
 #banner {
 	background: #9c9;
-	padding-top: 10px; 
+	padding-top: 0px; 
 	padding-bottom: 10px; 
-	border-bottom: 2px solid; 
-	font: small-caps 40px/40px "Times New Roman", serif; 
+	border-bottom: 5px solid; 
+	font: small-caps 80px/80px "Times New Roman", serif; 
 	color: #282; 
-	text-align: center; 
+	text-align: center;
+	height: 90px; 
 }
 
 #banner img { 
-	float: left; 
+	float: left;
+	width: 220px;
+	height: 100px;
 }
 
 #columns { 
