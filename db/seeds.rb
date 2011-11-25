@@ -11,18 +11,21 @@ Post.create(:title => 'About Ruby On Rails',
     %{<p>
         <em>Ruby on Rails</em> is a magical development platform tackelling
         XSS easily on its own.
-      </p>})
+      </p>},
+  :user_id => 1)
 #...
 Post.create(:title => 'Blogging Application',
   :content => 
     %{<p>
         <em>Blogging Application</em> is a platform to share
         thoughts and ideas.
-      </p>})
+      </p>},
+  :user_id => 2)
 # . . . 
 Post.create(:title => 'About Life',
   :content => 
     %{<p>
         <em>About life</em> is all about perception.
-      </p>})      
+      </p>},
+  :user_id => 1)      
       
