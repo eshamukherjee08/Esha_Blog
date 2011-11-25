@@ -1,0 +1,12 @@
+<% if notice %>
+  <p id='notice'><%= notice%></p>
+<% end %>
+
+<h1>NEO BLOGGERS</h1>
+
+<% @posts.each do |post| %>
+  <div class="entry">
+    <h3><%= post.title %></h3>
+    <%= sanitize(post.content) %>
+  </div>
+<% end %>

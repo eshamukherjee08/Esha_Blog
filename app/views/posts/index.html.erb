@@ -1,0 +1,27 @@
+<div id="post_list">
+  <h1>NEO BLOGGERS</h1>
+
+  <table>
+  <% @posts.each do |post| %>
+    <tr class="<%= cycle('list_line_odd','list_line_even') %>">
+      <td class="list_description">
+        <dl>
+          <dt><%= post.title %></dt>
+          <dd><%= truncate(strip_tags(post.content), :length => 100) %></dd>
+        </dl>
+      </td>
+      <td class="list_actions">
+        <%= link_to 'Show', post %><br />
+        <%= link_to 'Edit', edit_post_path(post) %><br />
+        <%= link_to 'Destroy', post, 
+                    :confirm => 'Are you sure?', 
+                    :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>
