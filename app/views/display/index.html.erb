@@ -7,6 +7,8 @@
 <% @posts.each do |post| %>
   <div class="entry">
     <h3><%= post.title %></h3>
+    <b>By:</b><u><%= post.user.name %></u><br />
+    Created On:<u><%= post.created_at %></u><br />
     <%= sanitize(post.content) %>
   </div>
 <% end %>

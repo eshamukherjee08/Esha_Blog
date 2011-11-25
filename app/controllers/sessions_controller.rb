@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     if u = User.authenticate(params[:name], params[:password])
       session[:user_id] = u.id
-      redirect_to u
+      redirect_to posts_path
     else
       redirect_to login_url, :alert => "Invalid user/password combination"
     end

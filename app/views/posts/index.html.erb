@@ -6,16 +6,22 @@
     <tr class="<%= cycle('list_line_odd','list_line_even') %>">
       <td class="list_description">
         <dl>
-          <dt><%= post.title %></dt>
+          <dt><b><%= post.title %></b></dt><br />
           <dd><%= truncate(strip_tags(post.content), :length => 100) %></dd>
+          <br /><br/>By:<u><%= post.user.name %></u><br />
+          Created On:<u><%= post.created_at %></u><br />
         </dl>
       </td>
       <td class="list_actions">
         <%= link_to 'Show', post %><br />
+        <% if session[:user_id] == post.user_id %>
         <%= link_to 'Edit', edit_post_path(post) %><br />
         <%= link_to 'Destroy', post, 
                     :confirm => 'Are you sure?', 
-                    :method => :delete %>
+                    :method => :delete %><br />
+        <%= link_to 'MyProfile', User.find(session[:user_id]) %>
+              
+        <% end %>
       </td>
     </tr>
   <% end %>
@@ -23,3 +29,4 @@
 </div>
 
 <br />
+<%= link_to 'Add New Post', new_post_path %>

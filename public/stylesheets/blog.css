@@ -24,7 +24,6 @@
 
 #post_list .list_description dt {
 	color:        #244;
-	font-weight:  bold;
 	font-size: larger;
 	border-bottom: 2px dashed #77d;
 }
@@ -140,30 +139,3 @@ font-size: small;
 #display .entry form, #display .entry form div {
 	display: inline;
 } 
-
-/*Styles for the cart in main page*/
-
-#display .cart_title {
-	font: 120% bold;
-}                  
-
-#display .item_price, #display .total_line {
-	text-align: right;
-}                   
-
-#display .total_line .total_cell {
-	font-weight: bold;
-}
-/* Style for the cart in the sidebar */
-
-#cart, #cart table {
-	font-size: smaller;
-	color: white;
-	background-color: maroon;
-}              
-
-#cart table {
-	border-top: 1px dotted #595;
-	border-border: 1px dotted #595;
-	margin-bottom: 10px;
-}

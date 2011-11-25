@@ -12,10 +12,10 @@
       <%= link_to 'Delete', post, 
                   :confirm => 'Are you sure?', 
                   :method => :delete %>
-      <%= sanitize(post.content) %>
+      <br /><%= sanitize(post.content) %>
     </div>
   <% end %>
 </p>
 
 
-<%= link_to 'Edit My Profile', edit_user_path(@user) %> | <%= link_to 'Add New Post', new_post_path %>
+<%= link_to 'Edit My Profile', edit_user_path(@user) %> | <%= link_to 'Add New Post', new_post_path %> | <%= link_to 'Back To Main', posts_path %>
