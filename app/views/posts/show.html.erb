@@ -1,4 +1,6 @@
-
+<% if notice %>
+  <p id='notice'><%= notice%></p>
+<% end %>
 <p>
   <b>Title:</b>
   <%= @post.title %>
@@ -11,5 +13,39 @@
 
 <% if session[:user_id] == @post.user_id %>
  <%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field :post, :id %>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment, :rows => 5, :cols => 80 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<% @post.comments.each do |com| %>
+  <div id="comment_b">
+    <div id="comment_c"><%= com.comment%></div><br />
+    <% if com.user_id == session[:user_id] or session[:user_id] == @post.user_id %>
+      <div id="comment_d"><%= link_to 'Destroy', com, 
+                                      :confirm => 'Are you sure?', 
+                                      :method => :delete %>
+      </div>
+    <% end %>
+    By:<u><%= com.user.name %></u>
+  </div><br />
 <% end %>
 <%= link_to 'Back', posts_path %>

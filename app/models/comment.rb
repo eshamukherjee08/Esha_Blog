@@ -12,4 +12,6 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+  #validate :comment, :presence => true
+  validates_presence_of :comment
 end

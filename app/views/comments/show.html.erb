@@ -1,0 +1,9 @@
+<% if @post.comments %>
+  <% @post.comments.each do |com| %>
+    <%= com.comment %>
+     <% if com.user_id == session[:user_id] %>
+       <%= link_to "Delete", :controller=> "comments", :id=> com.id, :method=> :delete%>
+     <% end %>
+    <br/>
+  <% end %>
+<% end %>
