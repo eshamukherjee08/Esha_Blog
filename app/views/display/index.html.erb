@@ -3,7 +3,7 @@
 <% end %>
 
 <h1>Fresh Blogs</h1>
-
+<p><%= will_paginate @posts %></p>
 <% @posts.each do |post| %>
   <div class="entry">
     <h3><%= post.title %></h3>

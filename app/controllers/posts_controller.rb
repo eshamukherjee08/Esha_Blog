@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.xml
   before_filter :authorize
   def index
-    @posts = Post.all
+    @posts = Post.paginate :page => params[:page], :order => 'created_at desc', :per_page => 3
 
     respond_to do |format|
       format.html # index.html.erb
